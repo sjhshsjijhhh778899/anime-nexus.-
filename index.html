@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Nexus - Color Library</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #0b0f19;
+            color: #ffffff;
+            padding-bottom: 40px;
+        }
+        header {
+            text-align: center;
+            padding: 30px 15px 15px 15px;
+        }
+        .sub-header {
+            font-size: 0.85rem;
+            color: #8a99ad;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        .credit {
+            font-size: 0.95rem;
+            color: #a4b0be;
+            margin-bottom: 25px;
+        }
+        .welcome-card {
+            background: linear-gradient(135deg, #13223f, #0d172e);
+            border: 1px solid #1f3560;
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 1150px;
+            margin: 0 auto 25px auto;
+            text-align: right;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .welcome-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+        .welcome-card p {
+            font-size: 0.88rem;
+            color: #8a99ad;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .dropdown-box {
+            flex: 1;
+            min-width: 140px;
+            background: #111a2e;
+            border: 1px solid #1f3560;
+            border-radius: 8px;
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+        .dropdown-box select {
+            background: transparent;
+            border: none;
+            color: #fff;
+            width: 100%;
+            outline: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        .dropdown-box select option {
+            background: #111a2e;
+            color: #fff;
+        }
+        .search-box {
+            flex: 3;
+            min-width: 240px;
+            background: #111a2e;
+            border: 1px solid #1f3560;
+            border-radius: 8px;
+            padding: 12px 15px;
+            color: #a4b0be;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .search-box input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            width: 100%;
+            text-align: right;
+            font-size: 0.95rem;
+        }
+        .info-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            color: #8a99ad;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 15px;
+        }
+        .card {
+            background: #111a2e;
+            border: 1px solid #1f3560;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+        }
+        .color-preview {
+            height: 130px;
+            width: 100%;
+            cursor: pointer;
+        }
+        .card-body {
+            padding: 12px 15px;
+        }
+        .card-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+        .hex-text {
+            font-weight: bold;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+        .copy-tag {
+            background: #192948;
+            color: #8a99ad;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .copy-tag:hover {
+            background: #ff4757;
+            color: #fff;
+        }
+        .rgb-hsl-text {
+            font-size: 0.78rem;
+            color: #7b889b;
+            margin-top: 2px;
+        }
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2ed573;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            display: none;
+            z-index: 1000;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="sub-header">Coordination Committee • Color Library</div>
+        <h1>Anime Nexus</h1>
+        <div class="credit">لجنة التنسيق - رند idk</div>
+
+        <div class="welcome-card">
+            <h3>مرحباً بك في مكتبة الألوان</h3>
+            <p>اكتشف آلاف الدرجات اللونية، وابحث عن اللون الذي يناسب تصميمك. اضغط على أي درجة لنسخ كودها، أو اختر صيغة HEX أو RGB أو HSL.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="controls">
+            <div class="dropdown-box">
+                <select id="formatSelect">
+                    <option value="HEX">HEX</option>
+                    <option value="RGB">RGB</option>
+                    <option value="HSL">HSL</option>
+                </select>
+            </div>
+            <div class="dropdown-box" style="flex: 2;">
+                <select id="categorySelect" onchange="filterColors()">
+                    <option value="all">جميع الألوان / All Colors</option>
+                    <option value="purple" selected>البنفسجي / Purple</option>
+                    <option value="yellow">الأصفر / Yellow</option>
+                    <option value="blue">الأزرق / Blue</option>
+                    <option value="red">الأحمر / Red</option>
+                    <option value="green">الأخضر / Green</option>
+                </select>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="ابحث بكود اللون أو اسمه..." oninput="filterColors()">
+                <span style="color: #6b7c96;">🔍</span>
+            </div>
+        </div>
+
+        <div class="info-bar">
+            <span>COLOR COLLECTION</span>
+            <span id="countText">درجة متاحة</span>
+        </div>
+
+        <div class="grid" id="colorGrid"></div>
+    </div>
+
+    <div class="toast" id="toast">تم النسخ بنجاح! 📋</div>
+
+    <script>
+        const colorDatabase = [
+            // البنفسجي (Purple)
+            { name: "Deep Purple", hex: "#6D56B3", rgb: "109, 86, 179", hsl: "255, 38%, 52%", cat: "purple" },
+            { name: "Dark Purple", hex: "#574294", rgb: "87, 66, 148", hsl: "255, 38%, 42%", cat: "purple" },
+            { name: "Midnight Purple", hex: "#423371", rgb: "66, 51, 113", hsl: "255, 38%, 32%", cat: "purple" },
+            { name: "Nightshade", hex: "#2D234D", rgb: "45, 35, 77", hsl: "255, 38%, 22%", cat: "purple" },
+            { name: "Royal Violet", hex: "#3C277C", rgb: "60, 39, 124", hsl: "255, 52%, 32%", cat: "purple" },
+            { name: "Void Purple", hex: "#2A1B55", rgb: "42, 27, 85", hsl: "255, 52%, 22%", cat: "purple" },
+            { name: "Light Lavender", hex: "#AA9CD3", rgb: "170, 156, 211", hsl: "255, 38%, 72%", cat: "purple" },
+            { name: "Soft Lilac", hex: "#8C79C3", rgb: "140, 121, 195", hsl: "255, 38%, 62%", cat: "purple" },
+            { name: "Electric Orchid", hex: "#A592DD", rgb: "165, 146, 221", hsl: "255, 52%, 72%", cat: "purple" },
+            { name: "Grape Hustle", hex: "#856CD0", rgb: "133, 108, 208", hsl: "255, 52%, 62%", cat: "purple" },
+            { name: "Vivid Amethyst", hex: "#6545C4", rgb: "101, 69, 196", hsl: "255, 52%, 52%", cat: "purple" },
+            { name: "Plum Neon", hex: "#4F33A3", rgb: "79, 51, 163", hsl: "255, 52%, 43%", cat: "purple" },
+
+            // الأصفر (Yellow)
+            { name: "Golden Sun", hex: "#ffd700", rgb: "255, 215, 0", hsl: "51, 100%, 50%", cat: "yellow" },
+            { name: "Amber Glow", hex: "#ffa502", rgb: "255, 165, 2", hsl: "38, 100%, 50%", cat: "yellow" },
+            { name: "Lemon Zest", hex: "#ffeaa7", rgb: "255, 234, 167", hsl: "48, 100%, 83%", cat: "yellow" },
+            { name: "Banana Yellow", hex: "#ffe135", rgb: "255, 225, 53", hsl: "52, 100%, 60%", cat: "yellow" },
+            { name: "Mustard Gold", hex: "#e1b12c", rgb: "225, 177, 44", hsl: "43, 75%, 53%", cat: "yellow" },
+            { name: "Warm Honey", hex: "#f39c12", rgb: "243, 156, 18", hsl: "36, 90%, 51%", cat: "yellow" },
+
+            // الأزرق (Blue)
+            { name: "Sky Blue", hex: "#7AB8FF", rgb: "122, 184, 255", hsl: "212, 100%, 74%", cat: "blue" },
+            { name: "Royal Blue", hex: "#1e90ff", rgb: "30, 144, 255", hsl: "210, 100%, 56%", cat: "blue" },
+            { name: "Deep Ocean", hex: "#0984e3", rgb: "9, 132, 227", hsl: "206, 92%, 46%", cat: "blue" },
+            { name: "Cyan Azure", hex: "#00d2d3", rgb: "0, 210, 211", hsl: "180, 100%, 41%", cat: "blue" },
+            { name: "Navy Classic", hex: "#2c3e50", rgb: "44, 62, 80", hsl: "210, 29%, 24%", cat: "blue" },
+
+            // الأحمر (Red)
+            { name: "Crimson Red", hex: "#ff4757", rgb: "255, 71, 87", hsl: "355, 100%, 64%", cat: "red" },
+            { name: "Ruby Fire", hex: "#c0392b", rgb: "192, 57, 43", hsl: "6, 63%, 46%", cat: "red" },
+            { name: "Tomato Fresh", hex: "#ff6348", rgb: "255, 99, 72", hsl: "11, 100%, 64%", cat: "red" },
+            { name: "Dark Cherry", hex: "#8b0000", rgb: "139, 0, 0", hsl: "0, 100%, 27%", cat: "red" },
+
+            // الأخضر (Green)
+            { name: "Emerald Mint", hex: "#2ed573", rgb: "46, 213, 115", hsl: "145, 65%, 51%", cat: "green" },
+            { name: "Forest Green", hex: "#10ac84", rgb: "16, 172, 132", hsl: "165, 83%, 37%", cat: "green" },
+            { name: "Neon Lime", hex: "#26de81", rgb: "38, 222, 129", hsl: "146, 71%, 51%", cat: "green" },
+            { name: "Olive Dark", hex: "#1e3d2f", rgb: "30, 61, 47", hsl: "153, 34%, 18%", cat: "green" }
+        ];
+
+        function renderColors(items) {
+            const grid = document.getElementById('colorGrid');
+            grid.innerHTML = '';
+            
+            items.forEach(c => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="color-preview" style="background-color: ${c.hex};" onclick="copyText('${c.hex}')"></div>
+                    <div class="card-body">
+                        <div class="card-row">
+                            <button class="copy-tag" onclick="copyText('${c.hex}')">COPY</button>
+                            <span class="hex-text">${c.hex}</span>
+                        </div>
+                        <div class="rgb-hsl-text">RGB ${c.rgb}</div>
+                        <div class="rgb-hsl-text">HSL ${c.hsl}</div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            document.getElementById('countText').innerText = `${items.length} درجة متاحة`;
+        }
+
+        function filterColors() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const category = document.getElementById('categorySelect').value;
+            
+            const filtered = colorDatabase.filter(c => {
+                const matchesCategory = category === 'all' || c.cat === category;
+                const matchesQuery = c.hex.toLowerCase().includes(query) || c.name.toLowerCase().includes(query) || c.rgb.includes(query);
+                return matchesCategory && matchesQuery;
+            });
+
+            renderColors(filtered);
+        }
+
+        // التشغيل التلقائي لعرض درجات البنفسجي أول ما يفتح الموقع
+        filterColors();
+
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const t = document.getElementById('toast');
+                t.style.display = 'block';
+                setTimeout(() => t.style.display = 'none', 1500);
+            });
+        }
+    </script>
+</body>
+</html>
